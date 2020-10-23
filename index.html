@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //variables needed//
+        let userInput;
+        let comInput;
+        let userWin;
+        let comWin;
+        let draw;
+        let comChoices;
+        let randomChoice;
+    
+        //get computer choices
+        comChoices = ["rock", "paper", "scissors"]; 
+
+        function playRound() {
+        //get user input
+        userInput = prompt("please enter rock, paper or scissors"); 
+        //verify its in lowercase
+        userInput = userInput.toLowerCase(); 
+
+        if (
+            userInput === "rock" ||
+            userInput === "paper" ||
+            userInput === "scissors"
+        ) {
+            function comrand() {
+            // function selects a random computer choice
+            randomChoice = comChoices[Math.floor(Math.random() * comChoices.length)];
+            return randomChoice;
+            }
+            window.alert(comrand());
+        } else {
+            // veirfy user input
+            window.alert("please enter rock, paper or scissors or check your spelling");
+            playRound();
+        }
+        }
+
+        //initialize count default
+        userWin = 0;            
+        comWin = 0;
+        draw = 0;
+
+
+        //conditionals to determine winners
+        if (userInput === "rock" && 
+            randomChoice === "scissors")
+            {               
+            userWin++;
+            console.log("You win!!! (rock crushes scissors)");
+        } 
+        else if(userInput  === "scissors" && 
+                randomChoice ==="rock")
+            {
+            comWin++;
+            console.log("Computer wins!!!(rock crushes scissors)");
+        } 
+        else if(userInput === "scissors" && 
+            randomChoice === "paper")
+            {
+            userWin++;
+            console.log("You win!!! (Scissors cuts paper)");
+        } 
+        else if(userInput === "paper" && 
+            randomChoice === "scissors")
+        {
+            comWin++;
+            console.log("Computer win!s!! (Scissors cuts paper)");
+        } 
+        else if(userInput === "paper" && 
+            randomChoice === "rock")
+            {
+            userWin++;
+            console.log("You win!!! (paper covers rock)");
+        } 
+        else if(userInput === "rock" && 
+            randomChoice === "paper")
+            {
+            comWin++;
+            console.log("Computer win!s!! (paper covers rock)");
+        } else {
+            draw++;
+            console.log("game is a draw");
+        }
+         
+        
+        // conditions to determines the overall winner
+        if (userWin === 5){                                              
+            console.log("User wins the game");
+        } else if (comWin === 5){
+            console.log("computer wins the game");
+        } else {
+            console.log("the game is a draw");
+        }
+
+        // begins the game afresh
+        playRound();                                                     
+        
+        
+    </script>
+</body>
+</html>
