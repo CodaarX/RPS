@@ -16,6 +16,13 @@
         let draw;
         let comChoices;
         let randomChoice;
+
+
+        //initialize count default
+        userWin = 0;            
+        comWin = 0;
+        draw = 0;
+  
     
         //get computer choices
         comChoices = ["rock", "paper", "scissors"]; 
@@ -31,59 +38,25 @@
             userInput === "paper" ||
             userInput === "scissors"
         ) {
-            function comrand() {
-            // function selects a random computer choice
-            randomChoice = comChoices[Math.floor(Math.random() * comChoices.length)];
-            return randomChoice;
-            }
-            window.alert(comrand());
-        } else {
-            // veirfy user input
-            window.alert("please enter rock, paper or scissors or check your spelling");
-            playRound();
-        }
-        }
-
-        //initialize count default
-        userWin = 0;            
-        comWin = 0;
-        draw = 0;
-
-
-        //conditionals to determine winners
-        if (userInput === "rock" && 
-            randomChoice === "scissors")
-            {               
+           
+        randomChoice = comChoices[Math.floor(Math.random() * comChoices.length)]; 
+            //conditionals to determine winners
+        if (userInput === "rock" && randomChoice === "scissors"){               
             userWin++;
             console.log("You win!!! (rock crushes scissors)");
-        } 
-        else if(userInput  === "scissors" && 
-                randomChoice ==="rock")
-            {
+        } else if(userInput  === "scissors" && randomChoice ==="rock"){
             comWin++;
             console.log("Computer wins!!!(rock crushes scissors)");
-        } 
-        else if(userInput === "scissors" && 
-            randomChoice === "paper")
-            {
+        } else if(userInput === "scissors" && randomChoice === "paper"){
             userWin++;
             console.log("You win!!! (Scissors cuts paper)");
-        } 
-        else if(userInput === "paper" && 
-            randomChoice === "scissors")
-        {
+        } else if(userInput === "paper" && randomChoice === "scissors"){
             comWin++;
             console.log("Computer win!s!! (Scissors cuts paper)");
-        } 
-        else if(userInput === "paper" && 
-            randomChoice === "rock")
-            {
+        } else if(userInput === "paper" && randomChoice === "rock"){
             userWin++;
             console.log("You win!!! (paper covers rock)");
-        } 
-        else if(userInput === "rock" && 
-            randomChoice === "paper")
-            {
+        } else if(userInput === "rock" && randomChoice === "paper"){
             comWin++;
             console.log("Computer win!s!! (paper covers rock)");
         } else {
@@ -91,19 +64,25 @@
             console.log("game is a draw");
         }
          
-        
         // conditions to determines the overall winner
         if (userWin === 5){                                              
-            console.log("User wins the game");
+            console.log("Game over. User wins the game");
         } else if (comWin === 5){
-            console.log("computer wins the game");
-        } else {
-            console.log("the game is a draw");
+            console.log("Game over. computer wins the game");
+        } else if (draw === 5){
+            console.log("the game has ended in a draw");
         }
-
-        // begins the game afresh
+         
+        } else {
+            // veirfy user input
+            window.alert("please enter rock, paper or scissors or check your spelling");
+        }
+        setTimeout(function () {
+            playRound();
+          }, 1000);
+        }
+      
         playRound();                                                     
-        
         
     </script>
 </body>
